@@ -6,8 +6,10 @@ reference:
 https://itunes.apple.com/search?term=star&country=au&media=movie
 
 # UI and Design
-For the UI and Design, I went with a standard table list in the Main screen, another screen for the detailed view which shows the description of an item, and a Favorites screen to show Movies that were marked as favorites from the Main screen.
 
+![Image of UI](https://user-images.githubusercontent.com/40202220/123507453-4cc0d180-d61e-11eb-9a9c-e8e98c7bfad0.png)
+
+For the UI and Design, I went with a grid list in with 2 columbs on the Main screen, while another screen for displaying the description of an item.
 
 # Architecture: RxMVVM with Clean
 
@@ -29,7 +31,7 @@ The app uses coroutines so the app dynamically update when there are changes obs
 
 In this app, the android jetpack **Navigation** is used to handle navigation and data transactions between fragments. Because of this implementation, the app only uses one activity with multiple fragments.
 
-# Persistence
+### Persistence
 For persistence, The app uses android jetpack **Room** which is widely adopted by the android community as a reliable library for handling local data storage.
 
 The app stores the response `Movie` and also updates it for every successful network call inside `MovieRepository`. The stored data will be exposed first to the UI, then executes a network call which when successful, updates the stored data and exposes the result to the UI. Whenever the app goes offline, proper error handlers are used in order to properly display to the user.
