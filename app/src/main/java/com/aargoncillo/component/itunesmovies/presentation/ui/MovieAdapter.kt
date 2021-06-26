@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.aargoncillo.component.itunesmovies.databinding.ItemMovieBinding
 import com.aargoncillo.component.itunesmovies.domain.model.Movie
+import com.aargoncillo.component.itunesmovies.domain.model.Result.Status
 
 class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
 
@@ -28,6 +29,10 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
     private val binding: ItemMovieBinding
   ) : RecyclerView.ViewHolder(binding.root) {
 
+    /**
+     * handles click event where if item is clicked, navigate to [MovieDetailsFragment] fragment
+     * and attaches selected item in list as an argument
+     */
     init {
       binding.setClickListener { view ->
         binding.movie?.let { movie ->
@@ -36,6 +41,13 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
       }
     }
 
+    /**
+     * handles navigation to [MovieDetailFragment] fragment
+     * attaches argument [Movie] to be used by the next fragment
+     *
+     * @param movie data to be attached to arguments so next fragment can collect the data
+     * @param view reference for fragment navigation
+     */
     private fun navigateToDetailFragment(
       movie: Movie,
       view: View
@@ -45,6 +57,9 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
     }
 
     fun bind(item: Movie) {
+      /**
+       * Apply data binding to [item_movie] layout.
+       */
       binding.apply {
         movie = item
         executePendingBindings()
@@ -53,6 +68,9 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
   }
 }
 
+/**
+ * Class for comparing and replacing data which is to be updated by the adapter
+ */
 private class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
   override fun areItemsTheSame(oldItem: Movie, newItem: Movie) =
     oldItem.trackId == newItem.trackId

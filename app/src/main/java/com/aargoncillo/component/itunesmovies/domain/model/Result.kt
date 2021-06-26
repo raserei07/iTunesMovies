@@ -1,7 +1,14 @@
 package com.aargoncillo.component.itunesmovies.domain.model
 
 /**
- * Generic class for holding success response, error response and loading status
+ * Class for holding success response, error response and loading status
+ *
+ * @param status identifier if the data is success, error, or loading
+ * @param data contains the network responses when call is success
+ * @param error formatted error which has response error code and error string body
+ * @param message error message from response body
+ *
+ * @return properly formatted data based on [Status]
  */
 data class Result<out T>(
   val status: Status,

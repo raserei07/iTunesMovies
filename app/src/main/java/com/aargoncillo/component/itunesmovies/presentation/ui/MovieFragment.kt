@@ -11,10 +11,12 @@ import com.aargoncillo.component.itunesmovies.databinding.FragmentMovieListBindi
 import com.google.android.material.snackbar.Snackbar
 import com.aargoncillo.component.itunesmovies.domain.model.Result
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
+@ExperimentalCoroutinesApi
 class MovieFragment : Fragment() {
 
   private val viewModel: MovieViewModel by viewModels()
@@ -59,14 +61,12 @@ class MovieFragment : Fragment() {
               // Update list in adapter
               adapter.submitList(list)
             }
-            //loading.visibility = View.GONE
             binding.swipeRefresh.isRefreshing = false
           }
           Result.Status.ERROR -> {
             result.message?.let { error ->
               showError(error)
             }
-            //loading.visibility = View.GONE
             binding.swipeRefresh.isRefreshing = false
           }
           Result.Status.LOADING -> {

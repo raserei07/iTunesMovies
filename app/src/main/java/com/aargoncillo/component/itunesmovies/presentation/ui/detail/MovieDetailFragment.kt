@@ -29,9 +29,13 @@ class MovieDetailFragment : Fragment() {
       container,
       false
     ).apply {
+      /**
+       * Apply data binding to [fragment_movie_detail] layout
+       */
       viewModel = movieViewModelMovie
       lifecycleOwner = viewLifecycleOwner
 
+      // Handle appbar back button action
       toolbar.setNavigationOnClickListener { view ->
         view.findNavController().navigateUp()
       }

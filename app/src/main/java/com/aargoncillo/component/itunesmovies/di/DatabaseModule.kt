@@ -9,12 +9,16 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.io.IOException
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
+  /**
+   * Provides reference of room database
+   */
   @Provides
   @Singleton
   fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
@@ -25,6 +29,9 @@ object DatabaseModule {
     ).build()
   }
 
+  /**
+   * Provides database calls on [MovieDao]
+   */
   @Provides
   fun provideMovieDao(appDatabase: AppDatabase): MovieDao {
     return appDatabase.movieDao()

@@ -4,9 +4,13 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.aargoncillo.component.itunesmovies.data.repository.MovieRepository
+import com.aargoncillo.component.itunesmovies.presentation.ui.MovieFragment
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+/**
+ * The ViewModel for [MovieDetailFragment].
+ */
 @HiltViewModel
 class MovieDetailViewModel @Inject internal constructor(
   private val movieRepository: MovieRepository,
