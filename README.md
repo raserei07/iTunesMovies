@@ -11,7 +11,7 @@ https://itunes.apple.com/search?term=star&country=au&media=movie
 
 For the UI and Design, I went with a grid list in with 2 columbs on the Main screen, while another screen for displaying the description of an item.
 
-# Architecture: RxMVVM with Clean
+# Architecture: MVVM with Clean
 
 ![Image of architecture](https://uploads.toptal.io/blog/image/127608/toptal-blog-image-1543413671794-80993a19fea97477524763c908b50a7a.png)
 Image reference: https://www.toptal.com/android/android-apps-mvvm-with-clean-architecture
