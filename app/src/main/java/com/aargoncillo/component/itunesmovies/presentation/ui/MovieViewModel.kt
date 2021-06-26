@@ -5,9 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aargoncillo.component.itunesmovies.data.repository.MovieRepository
 import com.aargoncillo.component.itunesmovies.domain.model.Movie
+import com.aargoncillo.component.itunesmovies.domain.model.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,6 +31,10 @@ class MovieViewModel
   }
 
   fun loadData() {
-    viewModelScope.launch { movieRepository.getListMovie().collect { movieList.value = it } }
+    viewModelScope.launch {
+      movieRepository.getListMovie().collect {
+        movieList.value = it
+      }
+    }
   }
 }

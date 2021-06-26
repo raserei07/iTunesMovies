@@ -1,5 +1,6 @@
 package com.aargoncillo.component.itunesmovies.data.repository
 
+import android.util.Log
 import com.aargoncillo.component.itunesmovies.data.local.dao.MovieDao
 import com.aargoncillo.component.itunesmovies.data.network.dataSource.MovieNetworkDataSource
 import com.aargoncillo.component.itunesmovies.data.network.mapper.MovieDtoMapper

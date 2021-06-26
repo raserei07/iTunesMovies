@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.aargoncillo.component.itunesmovies.databinding.FragmentMovieListBinding
 import com.google.android.material.snackbar.Snackbar
+import com.aargoncillo.component.itunesmovies.domain.model.Result
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -52,26 +53,26 @@ class MovieFragment : Fragment() {
   ) {
     viewModel.movieList.onEach {
       it?.also { result ->
-//        when (result.status) {
-//          Result.Status.SUCCESS -> {
-//            result.data?.let { list ->
-//              // Update list in adapter
-//              adapter.submitList(list)
-//            }
-//            //loading.visibility = View.GONE
-//            binding.swipeRefresh.isRefreshing = false
-//          }
-//          Result.Status.ERROR -> {
-//            result.message?.let { error ->
-//              showError(error)
-//            }
-//            //loading.visibility = View.GONE
-//            binding.swipeRefresh.isRefreshing = false
-//          }
-//          Result.Status.LOADING -> {
-//            binding.swipeRefresh.isRefreshing = true
-//          }
-//        }
+        when (result.status) {
+          Result.Status.SUCCESS -> {
+            result.data?.let { list ->
+              // Update list in adapter
+              adapter.submitList(list)
+            }
+            //loading.visibility = View.GONE
+            binding.swipeRefresh.isRefreshing = false
+          }
+          Result.Status.ERROR -> {
+            result.message?.let { error ->
+              showError(error)
+            }
+            //loading.visibility = View.GONE
+            binding.swipeRefresh.isRefreshing = false
+          }
+          Result.Status.LOADING -> {
+            binding.swipeRefresh.isRefreshing = true
+          }
+        }
       }
     }.launchIn(lifecycleScope)
   }
