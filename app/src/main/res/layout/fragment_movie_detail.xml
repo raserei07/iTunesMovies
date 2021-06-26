@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.aargoncillo.component.testapp.domain.model.Movie" />
+        <import type="com.aargoncillo.component.itunesmovies.domain.model.Movie" />
 
         <variable
             name="viewModel"
-            type="com.aargoncillo.component.testapp.presentation.ui.detail.MovieDetailViewModel" />
+            type="com.aargoncillo.component.itunesmovies.presentation.ui.detail.MovieDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
