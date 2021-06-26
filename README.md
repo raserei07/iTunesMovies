@@ -12,6 +12,7 @@ For the UI and Design, I went with a standard table list in the Main screen, ano
 # Architecture: RxMVVM with Clean
 
 ![Image of architecture](https://uploads.toptal.io/blog/image/127608/toptal-blog-image-1543413671794-80993a19fea97477524763c908b50a7a.png)
+Image reference: https://www.toptal.com/android/android-apps-mvvm-with-clean-architecture
 
 The architectural pattern of choice is **MVVM** with over other architecture patterns since android already adopted the use of ViewModel for handling data in the UI while transacting in the data source. And also include **Clean Architecture** which helps the app to be easily scaled to a large project, ease in testing implementation, and flexible when there are new requirement changes to the code. Since the app also uses clean architecture, the project uses android jetpack **Hilt** dependency injection was used.
 
