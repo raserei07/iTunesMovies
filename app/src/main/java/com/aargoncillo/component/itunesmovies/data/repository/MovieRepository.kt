@@ -1,6 +1,5 @@
 package com.aargoncillo.component.itunesmovies.data.repository
 
-import android.util.Log
 import com.aargoncillo.component.itunesmovies.data.local.dao.MovieDao
 import com.aargoncillo.component.itunesmovies.data.network.dataSource.MovieNetworkDataSource
 import com.aargoncillo.component.itunesmovies.data.network.mapper.MovieDtoMapper
@@ -11,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
-
 
 /**
  * Repository module for handling data operations.
@@ -49,6 +47,5 @@ class MovieRepository @Inject constructor(
 
   fun getMovie(trackId: Int) = database.getMovie(trackId)
 
-  private fun fetchTrendingMoviesCached(): Result<List<Movie>>? =
-    database.getMovieList()?.let { Result.success(it) }
+  private fun fetchTrendingMoviesCached(): Result<List<Movie>>? = database.getMovieList()?.let { Result.success(it) }
 }

@@ -1,4 +1,4 @@
-package com.aargoncillo.component.itunesmovies.presentation.ui
+package com.aargoncillo.component.itunesmovies.presentation.ui.movieList
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -79,8 +79,7 @@ class MovieFragment : Fragment() {
 
   private fun showError(msg: String) {
     view?.let {
-      Snackbar.make(it, msg, Snackbar.LENGTH_INDEFINITE).setAction("DISMISS") {
-      }.show()
+      Snackbar.make(it, msg, Snackbar.LENGTH_INDEFINITE).setAction("DISMISS") {}.show()
     }
   }
 }

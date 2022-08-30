@@ -13,8 +13,11 @@ data class MovieDto(
   @SerializedName("primaryGenreName")
   var primaryGenreName: String? = null,
 
-  @SerializedName("trackPrice")
-  var trackPrice: Double? = null,
+  @SerializedName("trackHdPrice")
+  var trackHdPrice: Double? = null,
+
+  @SerializedName("trackHdRentalPrice")
+  var trackHdRentalPrice: Double? = null,
 
   @SerializedName("artistName")
   var artistName: String? = null,
@@ -22,8 +25,14 @@ data class MovieDto(
   @SerializedName("artworkUrl100")
   var artworkUrl100: String? = null,
 
+  @SerializedName("previewUrl")
+  var previewUrl: String? = null,
+
   @SerializedName("releaseDate")
   var releaseDate: String? = null,
+
+  @SerializedName("contentAdvisoryRating")
+  var contentAdvisoryRating: String? = null,
 
   @SerializedName("longDescription")
   var longDescription: String? = null,

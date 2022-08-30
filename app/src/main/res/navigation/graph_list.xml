@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/movieFragment"
-        android:name="com.aargoncillo.component.itunesmovies.presentation.ui.MovieFragment"
+        android:name="com.aargoncillo.component.itunesmovies.presentation.ui.movieList.MovieFragment"
         tools:layout="@layout/fragment_movie_list">
         <action
             android:id="@+id/action_movie_list_to_movie_detail"
@@ -20,10 +20,10 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.aargoncillo.component.itunesmovies.presentation.ui.detail.MovieDetailFragment"
+        android:name="com.aargoncillo.component.itunesmovies.presentation.ui.movieDetail.MovieDetailFragment"
         tools:layout="@layout/fragment_movie_detail" >
         <argument
-            android:name="movieId"
+            android:name="MOVIE_ID_SAVED_STATE_KEY"
             app:argType="integer" />
     </fragment>
 </navigation>

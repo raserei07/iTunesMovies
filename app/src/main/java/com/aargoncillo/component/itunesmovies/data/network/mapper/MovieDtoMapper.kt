@@ -10,10 +10,12 @@ class MovieDtoMapper : DomainMapper<MovieDto, Movie> {
       trackId = model.trackId,
       trackName = model.trackName,
       genre = model.primaryGenreName,
-      price = "$${model.trackPrice}",
+      price = "Rent $${model.trackHdPrice} / Buy $${model.trackHdRentalPrice}",
       artistName = model.artistName,
-      imageUrl = model.artworkUrl100,
+      imageUrl = resizeImageUrl(model.artworkUrl100),
+      videoUrl = model.previewUrl,
       releaseDate = model.releaseDate,
+      ratingAdvisory= model.contentAdvisoryRating,
       longDescription = model.longDescription,
     )
   }
@@ -23,12 +25,19 @@ class MovieDtoMapper : DomainMapper<MovieDto, Movie> {
       trackId = domainModel.trackId,
       trackName = domainModel.trackName,
       primaryGenreName = domainModel.genre,
-      trackPrice = domainModel.price?.toDouble(),
       artistName = domainModel.artistName,
       artworkUrl100 = domainModel.imageUrl,
+      previewUrl = domainModel.videoUrl,
       releaseDate = domainModel.releaseDate,
+      contentAdvisoryRating = domainModel.ratingAdvisory,
       longDescription = domainModel.longDescription
     )
+  }
+
+  private fun resizeImageUrl(url: String?): String? {
+    return url?.let {
+      return it.replace("100x100bb", "268x0w")
+    }
   }
 
   fun toDomainList(initial: List<MovieDto>): List<Movie> {

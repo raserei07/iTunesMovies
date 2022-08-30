@@ -1,4 +1,4 @@
-package com.aargoncillo.component.itunesmovies.presentation.ui
+package com.aargoncillo.component.itunesmovies.presentation.ui.movieList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.aargoncillo.component.itunesmovies.databinding.ItemMovieBinding
 import com.aargoncillo.component.itunesmovies.domain.model.Movie
-import com.aargoncillo.component.itunesmovies.domain.model.Result.Status
 
 class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffCallback()) {
 

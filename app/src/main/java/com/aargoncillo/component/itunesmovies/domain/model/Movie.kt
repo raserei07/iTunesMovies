@@ -14,6 +14,8 @@ data class Movie(
   var price: String? = null,
   var artistName: String? = null,
   var imageUrl: String? = null,
+  var videoUrl: String? = null,
   var releaseDate: String? = null,
+  var ratingAdvisory: String? = null,
   var longDescription: String? = null,
 ) : Parcelable

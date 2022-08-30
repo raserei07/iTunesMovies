@@ -29,7 +29,7 @@
             <ImageView
                 android:id="@+id/avatar_image"
                 imageUrl="@{movie.imageUrl}"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="W,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
                 tools:text="Title" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/director_name_text"
+                android:id="@+id/age_rating_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -73,27 +73,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_text"
                 app:lineHeight="14dp"
                 tools:text="Genre" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/director_name_text2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="70dp"
-                android:drawablePadding="4dp"
-                android:gravity="left"
-                android:text="@{movie.price}"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:autoSizeMaxTextSize="24sp"
-                app:autoSizeMinTextSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/avatar_image"
-                app:lineHeight="14dp"
-                tools:text="Price" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

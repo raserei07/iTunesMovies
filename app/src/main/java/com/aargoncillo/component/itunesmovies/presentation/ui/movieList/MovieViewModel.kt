@@ -1,4 +1,4 @@
-package com.aargoncillo.component.itunesmovies.presentation.ui
+package com.aargoncillo.component.itunesmovies.presentation.ui.movieList
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -36,5 +36,9 @@ class MovieViewModel
         movieList.value = it
       }
     }
+  }
+
+  fun setRatingText() {
+
   }
 }

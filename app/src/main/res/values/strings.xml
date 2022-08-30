@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">iTunesMovies</string>
+    <string name="header_trailer">Trailer</string>
+    <string name="header_synopsis">Synopsis</string>
 </resources>
