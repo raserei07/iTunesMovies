@@ -7,7 +7,7 @@ https://itunes.apple.com/search?term=star&country=au&media=movie
 
 # UI and Design
 
-![Image of UI](https://user-images.githubusercontent.com/40202220/123507453-4cc0d180-d61e-11eb-9a9c-e8e98c7bfad0.png)
+![Screenshot_2022-09-02-13-10-24-230_com aargoncillo component itunesmovies](https://user-images.githubusercontent.com/40202220/188064398-2849c72c-ecb1-4105-bf88-fa789fa68b33.jpg)
 
 For the UI and Design, I went with a grid list in with 2 columbs on the Main screen, while another screen for displaying the description of an item.
 
