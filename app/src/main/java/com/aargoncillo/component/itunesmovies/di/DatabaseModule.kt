@@ -22,10 +22,9 @@ object DatabaseModule {
   @Provides
   @Singleton
   fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
-    return Room.databaseBuilder(
+    return Room.inMemoryDatabaseBuilder(
       appContext,
-      AppDatabase::class.java,
-      "app.db"
+      AppDatabase::class.java
     ).build()
   }
 
