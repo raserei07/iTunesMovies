@@ -2,6 +2,8 @@ package com.aargoncillo.component.itunesmovies.presentation.ui.movieList
 
 import android.os.Bundle
 import android.view.*
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -46,6 +48,10 @@ class MovieFragment : Fragment() {
 
   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
     inflater.inflate(R.menu.search_menu, menu)
+    setSearchView(menu)
+  }
+
+  private fun setSearchView(menu: Menu) {
     val search = menu.findItem(R.id.menu_search)
     val searchView: SearchView = search.actionView as SearchView
     val params: ActionBar.LayoutParams = ActionBar.LayoutParams(
@@ -57,6 +63,15 @@ class MovieFragment : Fragment() {
       setOnQueryTextListener(searchCallback())
       layoutParams = params
     }
+    val searchEditText = searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+    searchEditText.setTextColor(resources.getColor(R.color.white))
+    searchEditText.setHintTextColor(resources.getColor(R.color.white))
+    val searchImage = searchView.findViewById<View>(androidx.appcompat.R.id.search_button) as ImageView
+    searchImage.setImageResource(R.drawable.ic_search)
+    val searchCloseImage = searchView.findViewById<View>(androidx.appcompat.R.id.search_close_btn) as ImageView
+    searchCloseImage.setImageResource(R.drawable.ic_close)
+    val searchGoImage = searchView.findViewById<View>(androidx.appcompat.R.id.search_go_btn) as ImageView
+    searchGoImage.setImageResource(R.drawable.ic_chevron_right)
   }
 
   private fun setToolbar() {
