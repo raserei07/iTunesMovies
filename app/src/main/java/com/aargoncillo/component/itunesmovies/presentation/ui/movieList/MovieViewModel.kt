@@ -1,6 +1,5 @@
 package com.aargoncillo.component.itunesmovies.presentation.ui.movieList
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aargoncillo.component.itunesmovies.data.repository.MovieRepository
@@ -20,25 +19,27 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieViewModel
 @Inject internal constructor(
-  private val movieRepository: MovieRepository,
-  private val savedStateHandle: SavedStateHandle
+  private val movieRepository: MovieRepository
 ) : ViewModel() {
 
   val movieList = MutableStateFlow<Result<List<Movie>>?>(null)
 
   init {
-    loadData()
+    loadData(true)
   }
 
-  fun loadData() {
+  fun loadData(isNetworkRequired: Boolean) {
     viewModelScope.launch {
-      movieRepository.getListMovie().collect {
+      movieRepository.getListMovie(isNetworkRequired).collect {
         movieList.value = it
       }
     }
   }
 
-  fun setRatingText() {
-
+  fun setFavorite(movie: Movie) {
+    viewModelScope.launch {
+      movieRepository.setFavorite(movie.trackId, !movie.isFavorite)
+      loadData(false)
+    }
   }
 }

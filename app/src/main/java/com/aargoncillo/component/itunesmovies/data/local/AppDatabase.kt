@@ -10,7 +10,7 @@ import com.aargoncillo.component.itunesmovies.domain.model.Movie
   entities = [
     Movie::class
   ],
-  version = 2
+  version = 3
 )
 @TypeConverters()
 abstract class AppDatabase : RoomDatabase() {

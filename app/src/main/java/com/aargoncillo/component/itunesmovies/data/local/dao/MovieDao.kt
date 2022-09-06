@@ -12,8 +12,11 @@ interface MovieDao {
   @Query("SELECT * FROM movies WHERE trackId = :trackId")
   fun getMovie(trackId: Int): Flow<Movie?>
 
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun insertAll(plants: List<Movie>)
+  @Query("UPDATE movies SET isFavorite = :isFavorite WHERE trackId = :trackId")
+  fun setFavorite(trackId: Int, isFavorite: Boolean)
+
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
+  fun insertAll(movie: List<Movie>)
 
   @Delete
   fun deleteAll(movie: List<Movie>)

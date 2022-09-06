@@ -8,14 +8,14 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/baseLicenseAppBarLayout"
+            android:id="@+id/movie_app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/baseLicenseToolbar"
+                android:id="@+id/movie_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
                 app:title="Movies"
@@ -24,19 +24,21 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh"
+            android:id="@+id/movie_swipe_refresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:focusable="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/baseLicenseAppBarLayout">
+            app:layout_constraintTop_toBottomOf="@+id/movie_app_bar"
+            tools:visibility="visible">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movie_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:paddingHorizontal="16dp"
@@ -46,6 +48,18 @@
                 tools:listitem="@layout/item_movie" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="1dp"
+            android:text="@string/empty_search_result"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movie_app_bar"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

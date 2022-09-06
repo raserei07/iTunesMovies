@@ -18,4 +18,5 @@ data class Movie(
   var releaseDate: String? = null,
   var ratingAdvisory: String? = null,
   var longDescription: String? = null,
+  var isFavorite: Boolean = false
 ) : Parcelable

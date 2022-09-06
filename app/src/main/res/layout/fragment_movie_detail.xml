@@ -17,7 +17,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/toolbar_layout"
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_layout">
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -50,17 +50,15 @@
 
                 <ImageView
                     android:id="@+id/avatar_image"
-                    imageUrl="@{viewModel.movie.imageUrl}"
-                    android:layout_width="170dp"
-                    android:layout_height="255dp"
+                    loadImageUrl="@{viewModel.movie.imageUrl}"
+                    android:layout_width="150dp"
+                    android:layout_height="225dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     app:layout_constraintDimensionRatio="W,1:1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
-
-
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/name_text"
@@ -69,7 +67,7 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/circularxxtt_medium"
                     android:gravity="left"
@@ -79,11 +77,23 @@
                     android:textSize="16sp"
                     app:autoSizeMaxTextSize="16sp"
                     app:autoSizeMinTextSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/favorite_image"
                     app:layout_constraintStart_toEndOf="@+id/avatar_image"
                     app:layout_constraintTop_toTopOf="parent"
                     app:lineHeight="18dp"
                     tools:text="Title" />
+
+                <ImageView
+                    android:id="@+id/favorite_image"
+                    loadIsFavorite="@{viewModel.movie.isFavorite}"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:elevation="1dp"
+                    android:src="@drawable/ic_favorite_inactive"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardView"

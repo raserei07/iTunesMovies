@@ -2,4 +2,7 @@
     <string name="app_name">iTunesMovies</string>
     <string name="header_trailer">Trailer</string>
     <string name="header_synopsis">Synopsis</string>
+
+    <string name="empty_search_result">Sorry, we coudn\'t find any results</string>
+    <string name="menu_search">Search</string>
 </resources>

@@ -1,12 +1,12 @@
 package com.aargoncillo.component.itunesmovies.presentation.ui.movieDetail
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.aargoncillo.component.itunesmovies.data.repository.MovieRepository
 import com.aargoncillo.component.itunesmovies.domain.model.Movie
 import com.aargoncillo.component.itunesmovies.util.DateTimeUtils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -14,7 +14,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class MovieDetailViewModel @Inject internal constructor(
-  movieRepository: MovieRepository,
+  private val movieRepository: MovieRepository,
   savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -51,6 +51,14 @@ class MovieDetailViewModel @Inject internal constructor(
   private suspend fun setYearReleased(movie: Movie?) {
     movie?.releaseDate.apply {
       _releaseYear.emit(DateTimeUtils().getYear(this))
+    }
+  }
+
+  fun setFavorite() {
+    viewModelScope.launch {
+      movie.value?.isFavorite?.apply {
+        movieRepository.setFavorite(movieId, !this)
+      }
     }
   }
 

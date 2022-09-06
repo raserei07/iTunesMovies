@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /**
@@ -22,21 +23,21 @@ class MovieRepository @Inject constructor(
   private val api: MovieNetworkDataSource
 ) {
 
-  suspend fun getListMovie(): Flow<Result<List<Movie>>?> {
+  suspend fun getListMovie(isNetworkRequired: Boolean): Flow<Result<List<Movie>>?> {
     return flow {
       // Emits the cached values from local database
       emit(fetchTrendingMoviesCached())
+      if (!isNetworkRequired) return@flow
       // Emits the loading state
       emit(Result.loading())
       val result = api.fetchMovieList()
       // Cache to database if response is successful
       if (result.status == Result.Status.SUCCESS) {
         result.data?.results?.let {
-          mapper.toDomainList(it)
-          database.deleteAll(mapper.toDomainList(it))
+          // checks if database is empty, insert or update the list
           database.insertAll(mapper.toDomainList(it))
           // Emits the result from the API response
-          emit(Result.success(mapper.toDomainList(it)))
+          emit(Result.success(database.getMovieList()))
         }
       } else {
         // Emmit error result
@@ -46,6 +47,12 @@ class MovieRepository @Inject constructor(
   }
 
   fun getMovie(trackId: Int) = database.getMovie(trackId)
+
+  suspend fun setFavorite(trackId: Int, isFavorite: Boolean) {
+    withContext(Dispatchers.IO) {
+      database.setFavorite(trackId, isFavorite)
+    }
+  }
 
   private fun fetchTrendingMoviesCached(): Result<List<Movie>>? = database.getMovieList()?.let { Result.success(it) }
 }

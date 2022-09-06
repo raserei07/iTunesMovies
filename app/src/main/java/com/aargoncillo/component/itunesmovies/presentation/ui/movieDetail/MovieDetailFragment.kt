@@ -21,6 +21,7 @@ class MovieDetailFragment : Fragment() {
   private lateinit var binding: FragmentMovieDetailBinding
   private val movieDetailViewModel: MovieDetailViewModel by viewModels()
 
+
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -43,20 +44,26 @@ class MovieDetailFragment : Fragment() {
         view.findNavController().navigateUp()
       }
     }
-
     setHasOptionsMenu(true)
-    setObserver()
     this.binding = binding
+    setObserverEvent()
+    setClickEvent()
     return binding.root
   }
 
-  private fun setObserver() {
+  private fun setObserverEvent() {
     movieDetailViewModel.ageRating.onEach {
       binding.ageRatingText.text = it
     }.launchIn(lifecycleScope)
     movieDetailViewModel.releaseYear.onEach {
       binding.releaseYearText.text = it
     }.launchIn(lifecycleScope)
+  }
+
+  private fun setClickEvent() {
+    binding.favoriteImage.setOnClickListener {
+      movieDetailViewModel.setFavorite()
+    }
   }
 }
 

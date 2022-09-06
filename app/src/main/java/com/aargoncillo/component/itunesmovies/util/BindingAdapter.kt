@@ -1,18 +1,21 @@
 package com.aargoncillo.component.itunesmovies.util
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import com.aargoncillo.component.itunesmovies.R
 import com.bumptech.glide.Glide
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
 import kotlinx.android.synthetic.main.fragment_movie_detail.view.*
 
-@BindingAdapter("imageUrl")
-fun ImageView.loadImage(url: String?) {
+@BindingAdapter("loadImageUrl")
+fun ImageView.loadImageUrl(url: String?) {
   val shimmer = Shimmer.AlphaHighlightBuilder()
     .setDuration(1800)
     .setBaseAlpha(0.7f)
@@ -29,6 +32,18 @@ fun ImageView.loadImage(url: String?) {
     .load(url)
     .placeholder(shimmerDrawable)
     .into(this)
+}
+
+@SuppressLint("UseCompatLoadingForDrawables")
+@BindingAdapter("loadIsFavorite")
+fun ImageView.loadIsFavorite(isFavorite: Boolean?) {
+  isFavorite?.apply {
+    if (isFavorite) {
+      setImageResource(R.drawable.ic_favorite_active)
+    } else {
+      setImageResource(R.drawable.ic_favorite_inactive)
+    }
+  }
 }
 
 @BindingAdapter("videoUrl")
