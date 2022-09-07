@@ -11,7 +11,7 @@ https://itunes.apple.com/search?term=star&country=au&media=movie
 
 For the UI and Design, I went with a grid list in with 2 columbs on the Main screen, while another screen for displaying the description of an item.
 
-# Architecture: MVVM with Clean
+# Architecture: MVVM with Clean & DI
 
 ![process-flow](https://user-images.githubusercontent.com/40202220/188776408-8052c9da-cff4-4ca8-aa74-623d5bc31ff0.png)
 
