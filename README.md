@@ -13,8 +13,7 @@ For the UI and Design, I went with a grid list in with 2 columbs on the Main scr
 
 # Architecture: MVVM with Clean
 
-![Image of architecture](https://uploads.toptal.io/blog/image/127608/toptal-blog-image-1543413671794-80993a19fea97477524763c908b50a7a.png)
-Image reference: https://www.toptal.com/android/android-apps-mvvm-with-clean-architecture
+![process-flow](https://user-images.githubusercontent.com/40202220/188776408-8052c9da-cff4-4ca8-aa74-623d5bc31ff0.png)
 
 The architectural pattern of choice is **MVVM** with over other architecture patterns since android already adopted the use of ViewModel for handling data in the UI while transacting in the data source. And also include **Clean Architecture** which helps the app to be easily scaled to a large project, ease in testing implementation, and flexible when there are new requirement changes to the code. Since the app also uses clean architecture, the project uses android jetpack **Hilt** dependency injection was used.
 
@@ -25,7 +24,7 @@ Please see `MovieRepository.kt` for repository pattern reference.
 
 ### Coroutines
 
-The app uses coroutines so the app dynamically update when there are changes observed in the data being reference. it is also cold and lazy which consumes little phone resources since it only emits live data when there is an observer subscribed. 
+The app uses coroutines so the app dynamically update when there are changes observed in the data being reference. it is also cold and lazy which consumes little phone resources since it only emits data as flow when there is an observer subscribed. 
 
 ### Navigation
 
